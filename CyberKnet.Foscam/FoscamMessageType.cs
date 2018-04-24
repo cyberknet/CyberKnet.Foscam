@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CyberKnet.Foscam
+{
+    public enum FoscamMessageType
+    {
+        CMD_REQUEST_PORT = 20000,
+        CMD_REQUEST_LOGIN = 20001,
+
+        WS_REQUEST_PORT = 20000,
+        WS_REQUEST_LOGIN = 20001,
+        WS_REQUEST_LOGOUT = 20002,
+        WS_REQUEST_AUDIO = 20003,
+        WS_REQUEST_TALK = 20004,
+        WS_REQUEST_CGI = 20005,
+        WS_REQUSET_SNAP = 20006,
+        WS_REQUEST_OPEN_VIDEO = 20007,
+        WS_REQUEST_CLOSE_VIDEO = 20008,
+        WS_REQUEST_SELECT_FILE = 20009,
+        WS_REQUEST_GET_FILE_SIZE = 20010,
+        WS_REQUEST_FIRMWARE_UPGRADE = 20011,
+        WS_REQUEST_SEARCH_DEV_IP_AND_PORT = 20012,
+        WS_REQUEST_IMPORT_CONFIG_FILE = 20013,
+        WS_REQUEST_SAVE_RECORD_PATH = 20014,
+        WS_REQUEST_GET_RECORD_PATH = 20015,
+        WS_REQUEST_OPEN_RECORD_PATH = 20016,
+        WS_REQUEST_RECORD = 20017,
+        WS_REQUEST_SELECT_RECORD_PATH = 20018,
+        WS_REQUEST_SD_MANAGER = 20019,
+        WS_REQUEST_LOGIN_AGIN = 20020,
+
+        WEB_TELL_QUIT = 1000004
+    }
+}
