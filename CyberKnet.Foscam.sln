@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyberKnet.Foscam.Control", "IPCamControl\CyberKnet.Foscam.Control.csproj", "{7457F3E9-EBAB-4ACB-BAD3-F8A7D58FE291}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyberKnet.Foscam.Control", "CyberKnet.Foscam.Control\CyberKnet.Foscam.Control.csproj", "{7457F3E9-EBAB-4ACB-BAD3-F8A7D58FE291}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyberKnet.Foscam", "CyberKnet.Foscam\CyberKnet.Foscam.csproj", "{658BE367-D1D5-413A-AF49-0A2F9954EA02}"
 EndProject
