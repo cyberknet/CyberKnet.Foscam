@@ -97,9 +97,13 @@
     <Compile Include="Parameters\LoginCommand.cs" />
     <Compile Include="ConnectionType.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="PortEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Parameters\RecordParameter.cs" />
     <Compile Include="FoscamResponseType.cs" />
+    <Compile Include="Responses\PortResponse.cs" />
+    <Compile Include="Sockets\WebSocketCore.cs" />
+    <Compile Include="Sockets\WebSocketServiceManager.cs" />
     <Compile Include="Variables\FoscamVariable.cs" />
   </ItemGroup>
   <ItemGroup>

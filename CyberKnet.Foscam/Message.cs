@@ -13,6 +13,18 @@ namespace CyberKnet.Foscam.Parameters
         public int MessageType { get; set; }
         [JsonProperty("cmdObject")]
         public ParameterBase Parameter { get; set; }
+
+        [JsonProperty("version")]
+        public int Version { get; set; }
+        [JsonProperty("groupId")]
+        public int GroupId { get; set; }
+        [JsonProperty("sequence")]
+        public int Sequence { get; set; }
+	    [JsonProperty("dataLen")]
+        public int DataLength { get; set; }
+	    
+
+
         public Message(FoscamMessageType MessageType, ParameterBase Parameter)
         {
             this.MessageType = (int)MessageType;

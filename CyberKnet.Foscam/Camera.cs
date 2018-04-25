@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CyberKnet.Foscam.Variables;
 using CyberKnet.Foscam.Parameters;
+using CyberKnet.Foscam.Sockets;
 
 namespace CyberKnet.Foscam
 {
@@ -17,9 +18,19 @@ namespace CyberKnet.Foscam
         public string Username { get; set; }
         public string Password { get; set; }
 
+        private WebSocketCore WsCore { get; set; }
+        private WebSocketServiceManager WsManager { get; set; }
+        
+
         private Camera(string ipAddress, int port, string username, string password)
         {
+            WsManager = new WebSocketServiceManager(this, SERVICE_MANAGER_PORT);
+            WsManager.PortReceived += WsManager_PortReceived;
+        }
 
+        private void WsManager_PortReceived(object sender, PortEventArgs e)
+        {
+            WsCore = new WebSocketCore(this, e.Port);
         }
 
         public void Login(string ipAddress, int port, string username, string password, int streamType)
@@ -128,7 +139,17 @@ namespace CyberKnet.Foscam
 
         public void SDManage(string ip)
         {
-            var message = new Message(FoscamMessageType.WEB_TELL_QUIT, new SDManageParameter(ip, TIMEOUT_DEFAULT));
+            var message = new Message(FoscamMessageType.CMD_REQUEST_PORT, new SDManageParameter(ip, TIMEOUT_DEFAULT));
+            SendMessage(message);
+        }
+
+        public void RequestPort()
+        {
+            var message = new Message(FoscamMessageType.CMD_REQUEST_PORT, null);
+            message.Version = 1;
+            message.GroupId = FoscamGroupId();
+            message.Sequence = 0;
+            message.DataLength = 0;
             SendMessage(message);
         }
 
@@ -136,6 +157,17 @@ namespace CyberKnet.Foscam
         {
             string transData = Newtonsoft.Json.JsonConvert.SerializeObject(message);
 
+        }
+
+        private Int32 FoscamGroupId()
+        {
+            // duplicates Foscam's "rand" implementation in websocket_service_manager.js ... Not exactly random.
+            Int64 retval = 0;
+            var st = new DateTime(1970, 1, 1);
+            TimeSpan t = (DateTime.Now.ToUniversalTime() - st);
+            retval = (Int64)(t.TotalMilliseconds + 0.5);
+            string sub = retval.ToString();
+            return Convert.ToInt32(sub.Substring(sub.Length - 9, sub.Length));
         }
     }
 }
